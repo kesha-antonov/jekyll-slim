@@ -7,9 +7,9 @@ module Sliquid
 
     def unknown_line_indicator
       case @line
-      when /\A%\s*(\w+)/
-        @line = $'
-        parse_liquid_tag($1)
+      when /\A%\s*(.+)/
+        @line = $1
+        parse_liquid_tag
       when /\A\{/
         block = [:multi]
         @stacks.last << [:multi, [:slim, :interpolate, @line], block]
@@ -19,9 +19,9 @@ module Sliquid
       end
     end
 
-    def parse_liquid_tag(name)
+    def parse_liquid_tag
       block = [:multi]
-      @stacks.last << [:liquid, :tag, name, @line.strip, block]
+      @stacks.last << [:liquid, :tag, @line.strip, block]
       @stacks << block
     end
   end
