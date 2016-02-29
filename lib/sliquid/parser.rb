@@ -1,6 +1,6 @@
 module Sliquid
   class Parser < Slim::Parser
-    set_default_options :attr_list_delims => {
+    set_options :attr_list_delims => {
       '(' => ')',
       '[' => ']'
     }
