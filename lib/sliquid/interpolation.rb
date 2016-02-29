@@ -22,5 +22,24 @@ module Sliquid
       end until string.empty?
       block
     end
+
+    protected
+
+      def parse_expression(string)
+        count, i = 1, 0
+        while i < string.size && count != 0
+          if string[i] == ?{
+            count += 1
+          elsif string[i] == ?}
+            count -= 1
+          end
+          i += 1
+        end
+
+        raise(Temple::FilterError, "Text interpolation: Expected closing }") if count != 0
+
+        return string[i..-1], string[0, i-1]
+      end
+
   end
 end
