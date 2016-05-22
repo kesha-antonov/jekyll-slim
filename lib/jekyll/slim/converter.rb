@@ -5,7 +5,7 @@ module Jekyll
       priority :low
 
       def matches(ext)
-        ext =~ /slim/i
+        ext.downcase == '.slim'
       end
 
       def output_ext(ext)
