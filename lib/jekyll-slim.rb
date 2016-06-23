@@ -1,5 +1,4 @@
 require 'jekyll/slim'
 require 'sliquid/parser'
 require 'sliquid/filter'
-require 'sliquid/interpolation'
 require 'sliquid/engine'
