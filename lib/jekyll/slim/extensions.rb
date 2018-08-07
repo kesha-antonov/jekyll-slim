@@ -53,5 +53,6 @@ module Jekyll
 
     alias_method :initialize_without_pretransform, :initialize
     alias_method :initialize, :initialize_with_pretransform
+    alias_method :extname, :ext
   end
 end
